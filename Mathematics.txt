@@ -1,0 +1,191 @@
+1.Absolute Value 
+
+int absolute(int I) {
+    
+    if(I>0)
+    {
+        return I;
+    }
+    else
+    return -I;
+}
+========================================================================
+2.Convert Celsius To Fahrenheit 
+
+double cToF(int C)
+{
+    return (C*1.8000)+32;
+    
+}
+========================================================================
+3.Quadratic Equation Roots 
+
+void quadraticRoots(int a,int b, int c)
+{
+    int D  = b*b - 4*a*c; 
+    double sqrt_val = sqrt(abs(D)); 
+  
+   //Your code here
+   if(D>0 || D==0)
+   {
+       double x1 = (-b + sqrt_val)/(2.0*a);
+       double x2 = (-b - sqrt_val)/(2.0*a);
+       int r1 = floor(x1);
+       int r2 = floor(x2);
+       
+       cout<<r1<<" "<<r2;
+       //cout<<x1<<" "<<x2;
+   }
+  /* else if(D==0)
+   {
+       cout << -(double)b / (2.0*a); 
+   }
+   */
+   else
+   {
+       cout<<"Imaginary";
+   }
+   
+   
+   // Your don't need to printline
+   // It will automatically be 
+   // handled by driver code
+}
+============================================================
+
+4.Factorial Of Number 
+
+//Complete this function
+long long factorial (int N)
+{
+    if(N==0 || N==1)
+    {
+        return 1;
+    }
+    //Your code here
+    return factorial(N-1)*N;
+}
+==============================================================
+
+5.Digits In Factorial 
+
+int digitsInFactorial(int N)
+{
+    double fact = 0;
+    if(N<0)
+    {
+        return 1;
+    }
+    if(N<=1)
+    {
+        return 1;
+    }
+    for(int i=2;i<=N;i++)
+    {
+        fact = fact+log10(i);
+    }
+    return floor(fact)+1;
+}
+
+===============================================================
+
+6.GP Term 
+
+double termOfGP(double A,double B,int N)
+{
+    double r = B/A;
+    int p = N-1;
+    //Your code here
+    double result = (A *(pow(r,p)));
+    
+    return result;
+}
+
+=================================================================
+
+7.Primality Test 
+
+bool isPrime(int N)
+{
+    int m = N/2;
+    int flag=0;
+    for(int i=2;i<=m;i++)
+    {
+        if(N%i==0)
+        {
+            return false;
+        }
+    }
+    if(flag==0)
+    {
+        return true;
+    }
+}
+===============================================================
+
+8.Exactly 3 Divisors 
+
+int exactly3Divisors(int n)
+{
+    //Your code here
+    bool prime[n+1];
+    int count=0;
+	memset(prime, true, sizeof(prime)); 
+	prime[0] = prime[1] = 0; 
+
+	for (int p=2; p*p<=n; p++) 
+	{ 
+		// If prime[p] is not changed, then it is a prime 
+		if (prime[p] == true) 
+		{ 
+		// Update all multiples of p 
+		for (int i=p*2; i<=n; i += p) 
+			prime[i] = false; 
+		} 
+	} 
+	for (int i=0; i*i <= n ; i++)
+	{
+		if (prime[i])
+		{
+		    	//cout << i*i << " "; 
+		    	count++;
+		}
+	}
+	return count;
+======================================================================
+
+9.Addition Under Modulo
+
+int sumUnderModulo(long long a,long long b)
+{
+    int M=1000000007;
+    //your code here
+    return (a%M+b%M)%M; 
+}
+========================================================================
+
+10. Multiplication Under Modulo
+
+int multiplicationUnderModulo(long long a,long long b)
+{
+    int M=1000000007;
+    return ((a%M)*(b%M))%M;
+    //your code here
+}
+=======================================================================
+
+11.Modular Multiplicative Inverse 
+
+nt modInverse(int a, int m)
+{
+    //Your code here
+    a = a % m; 
+    for (int x=1; x<m; x++) 
+       if ((a*x) % m == 1) 
+          return x; 
+       
+    return -1; 
+}
+
+
+

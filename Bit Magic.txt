@@ -1,0 +1,230 @@
+1.Find first set bit 
+
+unsigned int getFirstSetBit(int n){
+    
+    // Your code here
+    return log2(n & -n)+1;
+    
+    
+}
+
+=============================================================
+
+2.Rightmost different bit
+
+int postion(int p)
+{
+    return log2(p & -p) +1;
+}
+int posOfRightMostDiffBit(int m, int n)
+{
+    if(m==n)
+    {
+        return -1;
+    }
+    return postion(m^n);
+    
+}
+
+==================================================================
+
+3.Check whether K-th bit is set or not
+
+bool checkKthBit(int n, int k){
+    
+    // Your code here
+    // It can be a one liner logic!! Think of it!!
+    if(((1<<k)&n)!=0)
+    {
+        return true;
+    }
+    return false;
+    
+}
+
+====================================================================
+
+4.Count total set bits 
+
+int countSetBits(int n){
+    int i = 0; 
+    int ans = 0;  
+    while ((1 << i) <= n) { 
+        bool k = 0; 
+        int change = 1 << i; 
+        for (int j = 0; j <= n; j++) { 
+            ans += k; 
+            if (change == 1) { 
+                k = !k; // When change = 1 flip the bit 
+                change = 1 << i; // again set change to 2^i 
+            } 
+            else { 
+                change--; 
+            } 
+        } 
+  
+        i++; 
+    } 
+  
+    return ans; 
+}
+==========================================================================
+
+5.Bit Difference 
+
+int countSetBits(int n) 
+{ 
+    int count = 0; 
+    while (n > 0) 
+    { 
+        count++; 
+        n &= (n-1); 
+    } 
+    return count; 
+} 
+  
+// Function that return count of 
+// flipped number 
+int countBitsFlip(int a, int b) 
+{ 
+    // Return count of set bits in 
+    // a XOR b 
+    return countSetBits(a^b); 
+} 
+
+============================================================================
+
+6.Number is sparse or not 
+
+// n : is the number to check if it is sparse
+bool isSparse(int n){
+    
+    
+    // Your code
+    if (n & (n>>1)) 
+        return false; 
+  
+    return true; 
+    
+}
+
+=============================================================================
+
+7.Longest Consecutive 1's 
+
+int maxConsecutiveOnes(int x)
+{
+ 
+    // Your code here
+    int count = 0; 
+  
+    // Count the number of iterations to 
+    // reach x = 0. 
+    while (x!=0) 
+    { 
+        // This operation reduces length 
+        // of every sequence of 1s by one. 
+        x = (x & (x << 1)); 
+  
+        count++; 
+    } 
+  
+    return count; 
+    
+    
+}
+
+=============================================================================
+
+8.Binary To Gray Code equivalent 
+
+int greyConverter(int n)
+{
+    
+    // Your code here
+    return n ^ (n >> 1); 
+    
+}
+
+===============================================================================
+
+9.Gray to Binary equivalent 
+
+int grayToBinary(int n)
+{
+    
+    // Your code here
+    int dec = 0;
+
+    for( ; n;n = n >> 1)
+    {
+    dec ^= n;
+    }
+
+return dec;
+    
+}
+
+================================================================================
+
+10.Power of 2 
+
+bool isPowerofTwo(long long n){
+    
+    // Your code here   
+     int res = __builtin_popcountll(n);
+  if (res==1)
+      return true;
+  else
+      return false;  
+    
+}
+================================================================================
+
+11.Swap all odd and even bits 
+
+def swapBits(n):
+    res1 = n & 0xAAAA
+    res2 = n & 0x555555
+  
+    res1 >>= 1
+    res2 <<= 1
+  
+    return res1 | res2
+
+==================================================================================
+
+12.Maximum AND Value 
+
+int checkBit(int pattern, int arr[], int n)
+{
+    int count = 0;
+    for (int i = 0; i < n; i++)
+        if ((pattern & arr[i]) == pattern)
+            count++;
+    return count;
+}//User function Template for C++
+ 
+// Function for finding maximum and value pair
+int maxAND (int arr[], int n)
+{
+    
+    // Your code here
+    int res = 0, count;
+ 
+    // iterate over total of 30bits from msb to lsb
+    for (int bit = 31; bit >= 0; bit--)
+    {
+        // find the count of element having set  msb
+        count = checkBit(res | (1 << bit),arr,n);
+ 
+        // if count >= 2 set particular bit in result
+        if ( count >= 2 )        
+            res |= (1 << bit);        
+    }
+ 
+    return res;
+    
+}
+
+=====================================================================================
